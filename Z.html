@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Czat z Zenciax</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        input, button {
+            font-size: 16px;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        #chat {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Witaj na stronie Zenciax!</h1>
+    <p>Wpisz coś w polu poniżej:</p>
+    
+    <input type="text" id="userInput" placeholder="Napisz coś...">
+    <button onclick="checkInput()">Wyślij</button>
+
+    <p id="chat"></p>
+
+    <script>
+        let step = 0;  // Zmienna do śledzenia etapu rozmowy
+
+        function checkInput() {
+            let input = document.getElementById("userInput").value.trim();
+            let chat = document.getElementById("chat");
+
+            if (step === 0 && input.toLowerCase() === "zenciaxxxx".toLowerCase()) {
+                chat.innerHTML = "Podaj hasło";
+                step = 1;  // Przechodzimy do następnego etapu
+            } else if (step === 1 && input === "KingZenciax") {
+                chat.innerHTML = "Witaj Zenciax!";
+                step = 0;  // Resetujemy etap rozmowy
+            } else {
+                chat.innerHTML = "Nie rozumiem. Spróbuj ponownie.";
+                step = 0;  // Resetujemy etap rozmowy
+            }
+
+            document.getElementById("userInput").value = ""; // Czyścimy pole po wpisaniu
+        }
+    </script>
+</body>
+</html>
